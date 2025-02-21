@@ -3,7 +3,7 @@ public class TicketRunner {
 
         Ticket ticket = new Ticket(10, "Yasemin Alan", 10, 2, 3);
 
-        double price = ticket.priceCalculate();
+        double price = ticket.calculatePrice();
         System.out.println(price);
 
     }

@@ -82,7 +82,7 @@ public class Ticket {
                 '}';
     }
 
-    public double priceCalculate() {
+    public double calculatePrice() {
         if (seatNumber % 3 != 0) {
             if (tripType == 1) {
                 price = distance * oneWay;
@@ -96,11 +96,11 @@ public class Ticket {
                 price = distance * roundTrip * priceIncrease;
             }
         }
-        priceDiscount();
+        applyDiscount();
         return price;
     }
 
-    public double priceDiscount() {
+    public double applyDiscount() {
         if (tripType == 2) {
             price = price - (price * 0.2);
         }
