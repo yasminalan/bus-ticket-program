@@ -6,10 +6,5 @@ public class TicketRunner {
         double price = ticket.priceCalculate();
         System.out.println(price);
 
-        double finalPrice = ticket.priceDiscount();
-        System.out.println(finalPrice);
-
-
-
     }
 }

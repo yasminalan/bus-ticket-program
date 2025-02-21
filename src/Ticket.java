@@ -96,6 +96,7 @@ public class Ticket {
                 price = distance * roundTrip * priceIncrease;
             }
         }
+        priceDiscount();
         return price;
     }
 
