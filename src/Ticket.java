@@ -5,9 +5,6 @@ public class Ticket {
     private int passengerAge;
     private int tripType;
     private int seatNumber;
-    public int oneWay = 1;
-    public int roundTrip = 2;
-    public double priceIncrease = 1.2;
     public double price;
 
     public Ticket(int distance, String passengerName, int passengerAge, int tripType, int seatNumber) {
@@ -83,21 +80,27 @@ public class Ticket {
     }
 
     public double calculatePrice() {
-        if (seatNumber % 3 != 0) {
-            if (tripType == 1) {
-                price = distance * oneWay;
-            } else {
-                price = distance * roundTrip;
-            }
-        } else {
-            if (tripType == 1) {
-                price = distance * oneWay * priceIncrease;
-            } else {
-                price = distance * roundTrip * priceIncrease;
-            }
+        double priceIncrease = 1;
+        if (isWindowSide()) {
+            priceIncrease = 1.2;
         }
+        int numberOfWay = 1;
+        if(isRoundTrip()) {
+            numberOfWay = 2;
+        }
+
+        price = distance * numberOfWay * priceIncrease;
+
         applyDiscount();
         return price;
+    }
+
+    public boolean isWindowSide() {
+        return seatNumber % 3 == 0;
+    }
+
+    private boolean isRoundTrip() {
+        return tripType == 2;
     }
 
     public double applyDiscount() {
